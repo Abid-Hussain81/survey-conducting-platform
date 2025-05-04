@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Select Your Plan</title>
+  <link rel="stylesheet" href="select-plan.css">
+</head>
+<body>
+
+  <div class="plan-container">
+    <h1>Choose Your Plan</h1>
+
+    <div class="plans">
+      <div class="plan" onclick="selectPlan('Starter', '9.99')">
+        <h2>Starter</h2>
+        <p>$9.99/month</p>
+      </div>
+
+      <div class="plan" onclick="selectPlan('Professional', '19.99')">
+        <h2>Professional</h2>
+        <p>$19.99/month</p>
+      </div>
+
+      <div class="plan" onclick="selectPlan('Enterprise', '49.99')">
+        <h2>Enterprise</h2>
+        <p>$49.99/month</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function selectPlan(planName, planPrice) {
+      // Mock logged in username (replace this with real session later)
+      const loggedInUsername = 'genz_legend';
+
+      // Save details to localStorage
+      localStorage.setItem('selectedPlan', planName);
+      localStorage.setItem('selectedPrice', planPrice);
+      localStorage.setItem('username', loggedInUsername);
+
+      // Redirect to payment page
+      window.location.href = 'payment.html';
+    }
+  </script>
+
+</body>
+</html>

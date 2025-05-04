@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      padding: 20px;
+      background: #f4f6f8;
+      margin: 0;
+    }
+    .checkout-container {
+      max-width: 500px;
+      background: white;
+      padding: 30px;
+      margin: 50px auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    #plan-name {
+      text-align: center;
+      font-size: 22px;
+      margin-top: 0;
+      color: #0077ff;
+    }
+    #plan-price {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #555;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+    }
+    select, input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      transition: 0.3s;
+    }
+    select:focus, input:focus {
+      border-color: #0077ff;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0,119,255,0.3);
+    }
+    .checkout-amount {
+      font-size: 24px;
+      color: #0077ff;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .pay-btn {
+      background: #0077ff;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .pay-btn:hover {
+      background: #005fcc;
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="checkout-container fade-in">
+  <h2>Complete Your Payment</h2>
+
+  <!-- 🛒 Show selected plan and price here -->
+  <h1 id="plan-name">Loading Plan...</h1>
+  <p id="plan-price">Loading Price...</p>
+
+  <label for="bankSelect">Select Bank</label>
+  <select id="bankSelect">
+    <option value="">-- Choose Bank --</option>
+    <option value="JazzCash">JazzCash</option>
+    <option value="Easypaisa">Easypaisa</option>
+    <option value="HBL">HBL</option>
+    <option value="UBL">UBL</option>
+    <option value="BOP">BOP</option>
+    <option value="MCB">MCB</option>
+    <option value="BAL">Bank Alhabib Limited</option>
+    <option value="NBP">National Bank of Pakistan</option>
+    <option value="BA">Bank Alfalah</option>
+  </select>
+
+  <label for="cardSelect">Select Card Type</label>
+  <select id="cardSelect">
+    <option value="">-- Choose Card Type --</option>
+    <option value="Debit">Debit Card</option>
+    <option value="Credit">Credit Card</option>
+    <option value="Visa">Visa</option>
+    <option value="MasterCard">MasterCard</option>
+    <option value="Mobile Wallet">Mobile Wallet</option>
+  </select>
+
+  <label for="cardNumber">Card Number</label>
+  <input type="text" id="cardNumber" placeholder="Enter card/mobile number">
+
+  <div class="checkout-amount" id="checkoutAmount">No Plan Selected</div>
+
+  <button class="pay-btn" id="payNowBtn">Pay Now</button>
+</div>
+
+<script>
+  // Get Elements
+  const bankSelect = document.getElementById('bankSelect');
+  const cardSelect = document.getElementById('cardSelect');
+  const checkoutAmount = document.getElementById('checkoutAmount');
+  const payNowBtn = document.getElementById('payNowBtn');
+  const planNameElement = document.getElementById('plan-name');
+  const planPriceElement = document.getElementById('plan-price');
+
+  // Load plan from localStorage
+  document.addEventListener('DOMContentLoaded', () => {
+    const selectedPlan = localStorage.getItem("selectedPlan");
+    const selectedPrice = localStorage.getItem("selectedPrice");
+
+    if (selectedPlan && selectedPrice) {
+      planNameElement.textContent = selectedPlan;
+      planPriceElement.textContent = selectedPrice === "0" ? "Free" : `$${selectedPrice}/month`;
+
+      // Update checkout amount
+      checkoutAmount.textContent = selectedPrice === "0" ? "Free" : `$${selectedPrice}`;
+
+      // Save for payment button
+      payNowBtn.dataset.amount = selectedPrice;
+      payNowBtn.dataset.plan = selectedPlan;
+    } else {
+      planNameElement.textContent = "No Plan Selected";
+      planPriceElement.textContent = "";
+      checkoutAmount.textContent = "No Plan Selected";
+    }
+  });
+
+  // Bank Selection Auto Card Type
+  bankSelect.addEventListener('change', () => {
+    const selectedBank = bankSelect.value;
+    if (selectedBank === 'JazzCash' || selectedBank === 'Easypaisa') {
+      cardSelect.value = 'Mobile Wallet';
+      cardSelect.disabled = true;
+    } else {
+      cardSelect.disabled = false;
+      cardSelect.value = '';
+    }
+  });
+
+  // Payment Button
+  payNowBtn.addEventListener('click', () => {
+    const selectedBank = bankSelect.value;
+    const selectedCard = cardSelect.value;
+    const cardNumber = document.getElementById('cardNumber').value.trim();
+
+    if (!selectedBank || !selectedCard || !cardNumber) {
+      alert('Please fill all fields before proceeding! 🚫');
+      return;
+    }
+
+    alert(`✅ Payment initiated for ${payNowBtn.dataset.plan || 'your plan'} (${checkoutAmount.textContent}).\n\nBank: ${selectedBank}\nCard Type: ${selectedCard}\nCard No: ${cardNumber}`);
+    // After validation, you can redirect or process payment here
+  });
+</script>
+
+<script>
+  // This script runs when checkout.html loads
+  document.addEventListener('DOMContentLoaded', function() {
+    const planNameElement = document.getElementById('plan-name');
+    const planPriceElement = document.getElementById('plan-price');
+
+    // Get the stored values from localStorage
+    const selectedPlan = localStorage.getItem('selectedPlan');
+    const selectedPrice = localStorage.getItem('selectedPrice');
+
+    if (selectedPlan && selectedPrice !== null) {
+      planNameElement.textContent = `Plan: ${selectedPlan}`;
+      planPriceElement.textContent = `Price: $${selectedPrice}`;
+    } else {
+      planNameElement.textContent = "No plan selected";
+      planPriceElement.textContent = "";
+    }
+  });
+</script>
+
+</body>
+</html>

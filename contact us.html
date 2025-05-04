@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us - Survey Platform</title>
+  <link rel="stylesheet" href="index.css"> <!-- Linking your existing CSS -->
+  <style>
+    body {
+      background: #f5f7fa;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    .contact-container {
+      width: 90%;
+      max-width: 700px;
+      margin: 80px auto;
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+    }
+    @keyframes fadeInUp {
+      0% {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    .contact-container h1 {
+      font-size: 32px;
+      color: #333;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .contact-container p {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    input, textarea {
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 16px;
+      background: #f9f9f9;
+      transition: all 0.3s ease;
+    }
+    input:focus, textarea:focus {
+      background: #fff;
+      border-color: #6c63ff;
+      box-shadow: 0 0 8px rgba(108, 99, 255, 0.3);
+      outline: none;
+    }
+    button {
+      padding: 14px;
+      background: #6c63ff;
+      color: #fff;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+    }
+    button:hover {
+      background: #5548c8;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(108, 99, 255, 0.4);
+    }
+    @media (max-width: 600px) {
+      .contact-container {
+        margin: 40px 15px;
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="about us.html">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="survey.html">Survey</a></li>
+            <li><a href="contact us.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="logo">
+        <a href="index.html"><img src="logo1.png" alt="Online Survey Platform" /></a>
+    </div>
+</header>
+  <div class="contact-container">
+    <h1>Let's Connect</h1>
+    <p>Got a question, feedback, or just wanna say hi? Drop us a message ✉️</p>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <input type="text" id="subject" placeholder="Subject" required>
+      <textarea id="message" rows="5" placeholder="Your Message..." required></textarea>
+      <button type="submit">Send Message 🚀</button>
+    </form>
+  </div>
+
+  <script>
+    // Smooth page animation
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.contact-container').style.opacity = 1;
+    });
+
+    // Form validation
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if (name === "" || email === "" || subject === "" || message === "") {
+        alert("Please fill in all fields 📝");
+        return;
+      }
+      alert("Thank you " + name + "! Your message has been sent 🚀");
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>

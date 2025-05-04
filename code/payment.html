@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment - Confirm Your Plan</title>
+  <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Logo -->
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+
+    <!-- Progress -->
+    <div class="progress">Step 2 of 3: Payment</div>
+
+    <!-- Payment Card -->
+    <div class="payment-card">
+
+      <!-- Username -->
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="your_username">
+      </div>
+
+      <!-- Plan Summary -->
+      <div class="plan-summary">
+        <p id="plan-name">Selected Plan: </p>
+        <p id="plan-price" class="plan-price">$0.00 / month</p>
+      </div>
+
+      <!-- Payment Options -->
+      <div class="payment-options">
+        <button class="payment-button card-button" onclick="selectPayment('card')">
+          <img src="visa-icon.svg" alt="Visa"> Pay with Card
+        </button>
+        <button class="payment-button paypal-button" onclick="selectPayment('paypal')">
+          <img src="paypal-icon.svg" alt="PayPal"> Pay with PayPal
+        </button>
+        <button class="payment-button bank-button" onclick="selectPayment('bank')">
+          <img src="bank-icon.svg" alt="Bank"> Pay with Bank
+        </button>
+      </div>
+
+      <p class="secure-text">🔒 Secure Payment powered by Stripe and PayPal</p>
+
+    </div>
+
+    <div class="help-link">
+      <a href="/support">Need help?</a>
+    </div>
+
+  </div>
+
+  <script src="payment.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us</title>
+  <link rel="stylesheet" href="index.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+.hero-content {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  animation: fadeDown 1s ease-in;
+}
+
+.story-section, .team-section {
+  padding: 80px 20px;
+  text-align: center;
+  animation: fadeUp 1s ease-in;
+}
+
+.story-section h2, .team-section h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.story-section p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: #555;
+  line-height: 1.6;
+}
+
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.team-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.team-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 4px solid #eee;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #222;
+  color: #aaa;
+  font-size: 14px;
+  animation: fadeIn 2s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeDown {
+  from {opacity: 0; transform: translateY(-30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeUp {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .team-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+    .hero {
+      text-align: left;
+      padding: 80px 20px;
+      margin-top: 30px;
+      background: linear-gradient(135deg, #6e8efb, #a777e3);
+      color: #fff;
+    }
+    
+    .story-section, .team-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .team-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      width: 300px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .team-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 4px solid #eee;
+    }
+
+    .team-card h3 {
+      margin: 10px 0;
+      font-size: 22px;
+      color: #333;
+    }
+
+    .team-card p {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s;
+      margin-top: auto;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #222;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+
+    
+
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .team-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="survey.html">Survey</a></li>
+            <li><a href="contact us.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="logo">
+        <a href="index.html"><img src="logo1.png" alt="Online Survey Platform" /></a>
+    </div>
+</header>
+
+  <!-- Hero Section -->
+  <section class="hero about-hero">
+    <div class="hero-content">
+      <h1>About Us</h1>
+      <p>Big ideas. Bold moves. Real impact. That’s what we’re about. Our squad is made up of innovators and visionaries who don’t just dream — they do. Get to know the team that’s flipping the script and changing the game.</p>
+    </div>
+  </section>
+
+  <!-- Our Story Section -->
+  <section class="story-section">
+    <div class="container">
+      <h2>Our Mission</h2>
+      <p>"From the roots of tradition, we rise toward a new era.
+        Our mission is to drive the evolution — transforming the old ways into a bold, modern world where innovation leads the way."</p>
+    </div>
+  </section>
+
+  <!-- Meet the Team Section -->
+  <section class="team-section">
+    <div class="container">
+      <h2>Meet the Team</h2>
+      <div class="team-grid">
+        
+        <!-- Team Member 1 -->
+        <div class="team-card">
+          <img src="haroon.jpg" alt="Muhammad Haroon Sajjad">
+          <h3>Muhammad Haroon Sajjad</h3>
+          <p>Founder & CEO</p>
+          <a href="haroon.html" class="btn">View Profile</a>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="team-card">
+          <img src="tauqeer.jpg" alt="Tauqeer Abbas">
+          <h3>tauqeer Abbas</h3>
+          <p>Chief Technology Officer</p>
+          <a href="tauqeer.html" class="btn">View Profile</a>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="team-card">
+          <img src="younas.jpg" alt=" Muhammad Younas">
+          <h3>Muhammad Younas</h3>
+          <p>Lead Designer</p>
+          <a href="younas.html" class="btn">View Profile</a>
+        </div>
+
+
+      
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <nav>
+        <ul>
+            <li><a href="privacy policy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms and Conditions</a></li>
+        </ul>
+    </nav>
+    <h3>Good luck for FYP</h3>
+</footer>
+</body>
+</html>

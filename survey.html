@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Surveys</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Clear header overlap issue by pushing content down */
+        main {
+            flex: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 20px 20px 20px;
+            /* Top padding = header height (60px logo + nav + 40px extra spacing) */
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            height: 80px;
+            overflow: hidden;
+        }
+
+
+        footer {
+            text-align: center;
+        }
+
+        .survey-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px;
+        }
+
+        .survey-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            flex: 0 1 calc(50% - 15px);
+            /* Two cards per row */
+        }
+
+        /* Responsive: Stack on smaller screens */
+        @media (max-width: 600px) {
+            .survey-card {
+                flex: 1 1 100%;
+            }
+        }
+
+        .survey-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .survey-card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .survey-card p {
+            color: #555;
+        }
+
+        .create-survey-btn {
+            background-color: #6193FF;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            margin: 20px auto;
+            display: block;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            text-align: center;
+            width: 300px;
+        }
+
+        .create-survey-btn:hover {
+            background-color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about us.html">About</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="#">Survey</a></li>
+                <li><a href="contact us.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="logo">
+            <a href="index.html"><img src="logo1.png" alt="Online Survey Platform" /></a>
+        </div>
+    </header>
+
+    <main>
+        <a href="create-survey.html" class="create-survey-btn">➕ Create Your own Survey</a>
+
+        <section class="survey-container" id="survey-container">
+            <!-- Surveys will be dynamically added here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Crowd Voice. All rights reserved.</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-auth-compat.js"></script>
+
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDuvjCf1TrBiHdmbm4t9flgQsWLwekwX2I",
+            authDomain: "online-survey-conduct-platform.firebaseapp.com",
+            projectId: "online-survey-conduct-platform",
+            storageBucket: "online-survey-conduct-platform.appspot.com",
+            messagingSenderId: "290730548364",
+            appId: "1:290730548364:web:ca6b2e30d8876dd221afa9",
+            measurementId: "G-8J9N5J5PPE"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Function to fetch and display surveys
+        async function fetchSurveys() {
+            const surveyContainer = document.getElementById('survey-container');
+
+            try {
+                const snapshot = await db.collection('surveys').orderBy('createdAt', 'desc').get();
+                snapshot.forEach(doc => {
+                    const survey = doc.data();
+                    const surveyCard = document.createElement('div');
+                    surveyCard.classList.add('survey-card');
+                    surveyCard.innerHTML = `
+                        <h3>${survey.title}</h3>
+                        <p>${survey.description}</p>
+                        <a href="#" class="create-survey-btn" style="background-color: #4CAF50;">Take Survey</a>
+                    `;
+                    surveyContainer.appendChild(surveyCard);
+                });
+            } catch (error) {
+                console.error("Error fetching surveys: ", error);
+            }
+        }
+
+        // Fetch surveys when page loads
+        window.onload = fetchSurveys;
+
+
+    </script>
+
+</body>
+
+</html>

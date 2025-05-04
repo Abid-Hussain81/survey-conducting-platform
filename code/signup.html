@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #fff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 10px 20px;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+      font-size: 1.1rem;
+    }
+
+    nav ul li a {
+      color: #333;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      transition: all 0.2s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: rgb(180, 141, 90);
+      color: darkolivegreen;
+    }
+
+    .logo img {
+      max-height: 65px;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(196, 192, 192, 0.5);
+      z-index: -1;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      margin-top: 80px;
+    }
+
+    .text {
+      text-align: center;
+      max-width: 700px;
+      padding: 0 20px;
+    }
+
+    .text h2 {
+      font-size: 2rem;
+      color: #333;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 480px;
+      margin-top: 20px;
+    }
+
+    .name-fields {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    input[type="submit"] {
+      background-color: #4a90e2;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #2c6ed5;
+    }
+
+    #message {
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    #message.success {
+      color: green;
+    }
+
+    #message.error {
+      color: crimson;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #4a90e2;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    #loading-spinner {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.7);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+    #loading-spinner div {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about us.html">About</a></li>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="survey.html">Survey</a></li>
+        <li><a href="contact us.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="logo">
+      <a href="index.html"><img src="logo1.png" alt="Online Survey Platform Logo"></a>
+    </div>
+  </header>
+
+  <div class="overlay"></div>
+
+  <div class="container">
+    <div class="text">
+      <h2>Create Your Account</h2>
+      <p>Join the smartest survey community online. Fill in your details below to get started!</p>
+    </div>
+
+    <form id="signup-form">
+      <div class="name-fields">
+        <input type="text" id="first-name" placeholder="First Name" required>
+        <input type="text" id="last-name" placeholder="Last Name" required>
+        <input type="number" id="age" placeholder="Enter your age" required>
+      </div>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <input type="submit" value="Create Account">
+      <p id="message"></p>
+      <a href="login.html">Already have an account? Log in</a>
+    </form>
+  </div>
+
+  <div id="loading-spinner">
+    <div></div>
+  </div>
+
+  <footer>
+    <p>&copy; All rights reserved.</p>
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDuvjCf1TrBiHdmbm4t9flgQsWLwekwX2I",
+      authDomain: "online-survey-conduct-platform.firebaseapp.com",
+      projectId: "online-survey-conduct-platform",
+      storageBucket: "online-survey-conduct-platform.appspot.com",
+      messagingSenderId: "290730548364",
+      appId: "1:290730548364:web:ca6b2e30d8876dd221afa9",
+      measurementId: "G-8J9N5J5PPE"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+
+    document.getElementById('signup-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const firstName = document.getElementById('first-name').value.trim();
+      const lastName = document.getElementById('last-name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const age = document.getElementById('age').value;
+
+      const fullName = `${firstName} ${lastName}`;
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(userCredential.user, { displayName: fullName });
+        localStorage.setItem(`age_${userCredential.user.uid}`, age);
+
+        showLoadingAndRedirect("index.html");
+      } catch (error) {
+        console.error(error.message);
+        alert('Signup failed: ' + error.message);
+      }
+    });
+
+    function showLoadingAndRedirect(url) {
+      const spinner = document.getElementById('loading-spinner');
+      spinner.style.display = 'flex';
+      setTimeout(() => {
+        window.location.href = url;
+      }, 300);
+    }
+  </script>
+</body>
+
+</html>

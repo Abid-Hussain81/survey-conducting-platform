@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Muhammad Younas| Profile</title>
+  <link rel="stylesheet" href="index.css"> 
+  <style>
+    /* Reset some basic styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    header{
+        flex-direction: row-reverse;
+    }
+
+    /* Profile Container */
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 600px;
+      margin: 100px auto 50px;
+      background-color: #eee;
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .profile-container img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 5px solid #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-container h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    #main {
+      font-weight: normal;
+      font-size: large;
+      color: #666;
+    }
+
+    .contact-info {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .contact-info span {
+      font-weight: bold;
+    }
+
+    .contact-info a {
+      color: #333;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-info a:hover {
+      color: #007bff;
+    }
+
+    .social-links {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .social-link img {
+      width: 30px;
+      height: 30px;
+      transition: transform 0.3s;
+    }
+
+    .social-link img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+      }
+
+      nav ul li {
+        margin-bottom: 10px;
+      }
+
+      .logo {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="logo1.png" alt="Online Survey Platform Logo">
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about us.html">About</a></li>
+        <li><a href="index.html#feature">Features</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="survey.html">Survey</a></li>
+        <li><a href="contact us.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Profile Section -->
+  <div class="profile-container">
+    <img src="younas.jpg" alt="Muhammad younas">
+    <h1>Muhammad Younas  <span id="main">Designer</span></h1>
+
+    <div class="contact-info">
+      <span>Contact Number:</span> <a href="tel:+923017526121">+92 3017526121</a>
+    </div>
+    <div class="contact-info">
+      <span>WhatsApp Number:</span> <a href="https://wa.me/+923017526121?text=Hi%20Haroon%20Sajjad">+92 3017526121</a>
+    </div>
+    <div class="contact-info">
+      <span>Email:</span> <a href="mailto:muhammadyounisyouni@gmail.com">muhammadyounisyouni@gmail.com</a>
+    </div>
+
+    <div class="social-links">
+      <div class="social-link">
+        <a href="https://www.facebook.com/profile.php?id=100075897780356" target="_blank">
+          <img src="facebook.png" alt="Facebook">
+        </a>
+      </div>
+      
+      <div class="social-link">
+        <a href="#" target="_blank">
+          <img src="linkedin.png" alt="LinkedIn">
+        </a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
